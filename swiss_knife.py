@@ -1,18 +1,40 @@
 # main.py
+"""Название: swiss_knife
+
+Автор: hwpy
+Дата: 2025-03-28
+Описание: Универсальное приложение для работы с файлами
+"""
 import sys
 
 import qdarktheme
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication
 
-from config.swiss_knife_config import SwissKnifeConfig
 from archiver.controller.swiss_knife_controller import SwissKnifeController
 from archiver.model.archiver_manager import ArchiveManager
 from archiver.view.swiss_knife_view import SwissKnifeView
+from config.swiss_knife_config import SwissKnifeConfig
 
 
 class SwissKnifeApp:
-    def __init__(self):
+    """Класс приложения
+
+    Methods:
+        - run: запускает приложение
+
+    """
+
+    def __init__(self) -> None:
+        """Конструктор
+
+        Args:
+            - self: SwissKnifeApp - экземпляр
+
+        Returns:
+            None
+
+        """
         self.app = QApplication(sys.argv)
         qdarktheme.setup_theme("auto")
         self.config = SwissKnifeConfig()
@@ -23,7 +45,16 @@ class SwissKnifeApp:
         self.view.setWindowIcon(QIcon(self.config.icon_path))
         self.view.show()
 
-    def run(self):
+    def run(self) -> None:
+        """Запустить приложение
+
+        Args:
+            - self: SwissKnifeApp - экземпляр
+
+        Returns:
+            None
+
+        """
         sys.exit(self.app.exec_())
 
 
